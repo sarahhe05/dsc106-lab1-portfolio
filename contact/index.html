@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sarah He: Personal site and portfolio</title>
-    <link rel="stylesheet" href="/styles.css">
+    <title>contact</title>
 </head>
 <body>
     <nav>
@@ -15,10 +14,27 @@
             <li><a href="/dsc106-lab1-portfolio/resume/index.html">Resume</a></li>
             <li><a href="https://github.com/sarahhe05" target="_blank">GitHub</a></li>
         </ul>
-    </nav>
+    </nav>    
+    
+    <h1>Contact</h1>
 
-    <h1>Sarah He</h1>
-    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut doloremque, ipsum recusandae sit explicabo ducimus quibusdam nostrum nesciunt repellat commodi ipsam quasi repellendus unde molestiae est qui id, voluptatum placeat?</p>
-    <img src="/dsc106-lab1-portfolio/images/geisel.jpg" alt="geisel library">
+    <form action="mailto:foo@example.com" method="POST" enctype="text/plain">
+        <label>
+            Email:
+            <input type="email" name="email">
+        </label>
+
+        <label>
+            Subject:
+            <input name="subject">
+        </label>
+
+        <label>
+            Body:
+            <textarea name="body"></textarea>
+        </label>
+
+        <button>Send</button>
+    </form>
 </body>
 </html>
