@@ -21,7 +21,10 @@ for (let p of pages) {
     let url = p.url;
     let title = p.title;
 
-    url = !ARE_WE_HOME && !url.startsWith('http') ? './' + url : url;
+    if (!ARE_WE_HOME && !url.startsWith('http')) {
+      // Ensure that relative paths are correctly prefixed with the current directory structure
+      url = new URL(url, location.href).href;
+  }
 
     let a = document.createElement('a');
     a.href = url;
