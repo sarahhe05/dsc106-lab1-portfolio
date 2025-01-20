@@ -17,26 +17,34 @@ document.body.prepend(nav);
 
 const ARE_WE_HOME = document.documentElement.classList.contains('home');
 
+const basePath = location.hostname === 'sarahhe05.github.io' && location.pathname.startsWith('/dsc106-lab1-portfolio')
+    ? '/dsc106-lab1-portfolio'
+    : ''; // Add base path for pages in subdirectories, like the home page of the project
+
+
 for (let p of pages) {
-  let url = p.url;
-  let title = p.title;
+    let url = p.url;
+    let title = p.title;
 
-  if (!ARE_WE_HOME && !url.startsWith('http')) {
-      url = '../' + url;
-  }
+    // If not on the home page and the URL is a relative path, prepend '../' to make it work correctly
+    if (!ARE_WE_HOME && !url.startsWith('http') && !url.startsWith('/')) {
+        url = basePath + '/' + url;
+    }
 
-  let a = document.createElement('a');
-  a.href = url;
-  a.textContent = title;
-  nav.append(a);
+    let a = document.createElement('a');
+    a.href = url;
+    a.textContent = title;
+    nav.append(a);
 
-  if (a.host === location.host && a.pathname === location.pathname) {
-      a.classList.add('current');
-  }
+    // Highlight the current page link
+    if (a.host === location.host && a.pathname === location.pathname) {
+        a.classList.add('current');
+    }
 
-  if (a.host !== location.host) {
-      a.target = '_blank';
-  }
+    // Open external links in a new tab
+    if (a.host !== location.host) {
+        a.target = '_blank';
+    }
 }
 
 document.body.insertAdjacentHTML(
