@@ -1,0 +1,74 @@
+[
+    {
+      "title": "Major Power Outage Analysis",
+      "year": "2024",
+      "image": "../images/Major-Power-Outage-Analysis.png",
+      "description": "I analyzed power outage data."
+    },
+    {
+      "title": "ECOMENU: Low Carbon Recipe Recommender",
+      "year": "2024",
+      "image": "../images/ECOMENU.jpg",
+      "description": "A hackathon project where I developed a recipe recommendation platform based on sustainability data."
+    },
+    {
+      "title": "San Diego Crime Analysis",
+      "year": "2024",
+      "image": "../images/San-Diego-Crime-Analysis.jpg",
+      "description": "I cleaned and analyzed data from San Diego Police Department to identify trends that are present in San Diego crimes over the past 4 years."
+    },
+    {
+      "title": "Starry Sticker Shop Analysis",
+      "year": "2024",
+      "image": "../images/Starry-Sticker-Shop-Sales-Analysis.jpg",
+      "description": "Analyzed business data for my own sticker shop, helping to optimize pricing and product selection."
+    },
+    {
+      "title": "Lorem ipsum dolor sit.",
+      "year": "2023",
+      "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+      "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Id, dignissimos dolor quis nisi sint omnis commodi. Fuga, magni asperiores. Ut et delectus libero numquam consectetur repellat officiis neque! Ullam, mollitia."
+    },
+    {
+        "title": "Voluptates reprehenderit minus ea.",
+        "year": "2024",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Atque officia obcaecati impedit suscipit molestias, eius aliquid sit pariatur totam officiis numquam. Dolorem tempore aperiam nobis culpa quis vero eius suscipit natus quos laboriosam aliquam quam, quas quo numquam."
+    },
+    {
+        "title": "Nulla ad quas quidem.",
+        "year": "2023",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Iste maxime consequatur laboriosam sunt molestiae aliquam quos pariatur saepe in, ratione iusto natus repudiandae! Eligendi ipsum accusamus perspiciatis obcaecati. Assumenda quos alias doloremque et recusandae amet corporis, accusamus harum!"
+    },
+    {
+        "title": "Dolore a perferendis dolorum!",
+        "year": "2023",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Quibusdam quos, omnis impedit fugit voluptatum praesentium excepturi, hic doloremque at veritatis ipsam aperiam error! Error ipsam, quod tempora temporibus porro ad eum delectus explicabo, impedit vero perferendis. Totam, reprehenderit."
+    },
+    {
+        "title": "Repudiandae, dolor! In, nulla?",
+        "year": "2024",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Architecto repellendus nostrum expedita. Ex soluta dolor molestiae expedita tempora nisi incidunt, accusantium harum. Soluta assumenda veritatis numquam voluptas error earum, voluptates doloremque itaque fugit nobis iure odit, ipsum id!"
+    },
+    {
+        "title": "Recusandae iure rem aliquid.",
+        "year": "2022",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Placeat modi alias neque officiis iure, tempore veritatis. Rem accusantium sit porro obcaecati, aliquam impedit provident placeat minus cupiditate dignissimos modi, sequi ex? Iusto laudantium dolorum ab, praesentium architecto enim."
+    },
+    {
+        "title": "Lorem ipsum dolor sit.",
+        "year": "2020",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Id, dignissimos dolor quis nisi sint omnis commodi. Fuga, magni asperiores. Ut et delectus libero numquam consectetur repellat officiis neque! Ullam, mollitia."
+      },
+      {
+          "title": "Voluptates reprehenderit minus ea.",
+          "year": "2022",
+          "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+          "description": "Atque officia obcaecati impedit suscipit molestias, eius aliquid sit pariatur totam officiis numquam. Dolorem tempore aperiam nobis culpa quis vero eius suscipit natus quos laboriosam aliquam quam, quas quo numquam."
+    }
+  ]

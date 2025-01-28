@@ -157,3 +157,26 @@ form button {
   font-size: 1em;
   color: canvastext
 }
+
+#profile-stats {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 5px;
+  background-color: canvas;
+}
+
+#profile-stats dl {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;  /* Four equal-width columns */
+  gap: 10px;
+}
+
+#profile-stats dt {
+  font-weight: bold;
+  grid-row: 1;  /* Place <dt> on the first row */
+}
+
+#profile-stats dd {
+  grid-row: 2;  /* Place <dd> on the second row */
+  margin: 0;
+}
