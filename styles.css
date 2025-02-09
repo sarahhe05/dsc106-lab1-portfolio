@@ -227,6 +227,7 @@ path {
 }
 
 .selected {
-  --color: oklch(60% 45% 0) !important;
+  --color: gray !important;
   fill: var(--color);
 }
+

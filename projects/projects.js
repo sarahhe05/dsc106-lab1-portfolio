@@ -52,7 +52,14 @@ function setupPieChart(projects) {
             legend.selectAll("li")
                 .attr("class", (_, idx) => selectedIndex === idx ? "selected" : "");
 
-            // Filter projects based on selected year (Step 5.3)
+            // Change swatch color based on selected path
+            legend.selectAll("li")
+                .each(function(_, idx) {
+                    d3.select(this).select(".swatch")
+                        .style("background-color", selectedIndex === idx ? "var(--color)" : colors(idx)); // Highlight selected with a different color (e.g., orange)
+                });
+
+            // Filter projects based on selected year
             if (selectedIndex === -1) {
                 renderAllProjects(projects); // Show all projects if no wedge is selected
             } else {
@@ -62,7 +69,7 @@ function setupPieChart(projects) {
             }
         });
 
-    // Update legend
+    // Update legend with default colors
     let legend = d3.select(".legend").html("");
     data.forEach((d, idx) => {
         legend.append("li")
@@ -71,11 +78,14 @@ function setupPieChart(projects) {
             .style("align-items", "center")
             .style("gap", "10px")
             .html(`
-                <span class="swatch" style="background-color: ${colors(idx)};"></span>
+                <span class="swatch"></span>
                 ${d.label} <em>(${d.value})</em>
-            `);
+            `)
+            .select(".swatch")
+            .style("background-color", colors(idx)); // Set default color (based on the color scale)
     });
 }
+
 
 // **SEARCH FUNCTIONALITY**
 function setupSearch(projects) {
