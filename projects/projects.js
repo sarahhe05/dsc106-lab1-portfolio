@@ -9,13 +9,15 @@ async function fetchProjects() {
         const projects = await fetchJSON("../lib/projects.json");
         setupPieChart(projects);
         setupSearch(projects);
-        renderAllProjects(projects);
+        renderAllProjects(projects); // Initial render of all projects
     } catch (error) {
         console.error("Error fetching projects:", error);
     }
 }
 
 // **PIE CHART VISUALIZATION**
+let selectedIndex = -1; // No selected wedge initially
+
 function setupPieChart(projects) {
     let rolledData = d3.rollups(
         projects,
@@ -31,12 +33,34 @@ function setupPieChart(projects) {
     svg.selectAll("*").remove(); // Clear previous chart
 
     let arcData = sliceGenerator(data);
-    svg.selectAll("path")
+    let arcs = svg.selectAll("path")
         .data(arcData)
         .enter()
         .append("path")
         .attr("d", arcGenerator)
-        .attr("fill", (d, idx) => colors(idx));
+        .attr("fill", (d, idx) => colors(idx))
+        .on("click", (event, d) => {
+            // Toggle selection
+            selectedIndex = selectedIndex === d.index ? -1 : d.index;
+
+            // Apply the selected class to highlight the wedge
+            svg.selectAll("path")
+                .attr("class", (_, idx) => selectedIndex === idx ? "selected" : "");
+
+            // Apply the selected class to the legend
+            let legend = d3.select(".legend");
+            legend.selectAll("li")
+                .attr("class", (_, idx) => selectedIndex === idx ? "selected" : "");
+
+            // Filter projects based on selected year (Step 5.3)
+            if (selectedIndex === -1) {
+                renderAllProjects(projects); // Show all projects if no wedge is selected
+            } else {
+                const selectedYear = data[selectedIndex].label;
+                const filteredProjects = projects.filter(project => project.year === selectedYear);
+                renderAllProjects(filteredProjects); // Show projects for the selected year
+            }
+        });
 
     // Update legend
     let legend = d3.select(".legend").html("");
@@ -74,8 +98,10 @@ function setupSearch(projects) {
             projectItem.innerHTML = `
                 <img src="${project.image}" alt="${project.title}" class="project-img">
                 <h3>${project.title}</h3>
+                <div>
                 <p>${project.description}</p>
-                <small>Year: ${project.year}</small>
+                <p>${project.year}</p>
+                </div>
             `;
             resultsContainer.appendChild(projectItem);
         });
@@ -100,25 +126,29 @@ function setupSearch(projects) {
     });
 }
 
-// **RENDER ALL PROJECTS INITIALLY**
+// **RENDER PROJECTS (filtered or all)**
 function renderAllProjects(projects) {
     const projectsContainer = document.querySelector(".projects");
     const projectsTitle = document.querySelector("#project-count");
 
     if (projectsTitle) {
-        projectsTitle.textContent = projects.length;
+        projectsTitle.textContent = `${projects.length}`; // Update project count
     }
 
+    // Clear previous projects before rendering new ones
     projectsContainer.innerHTML = "";
+
     if (projects.length === 0) {
         projectsContainer.innerHTML = "<p>No projects available.</p>";
         return;
     }
 
+    // Render each project in the filtered list
     projects.forEach((project) => {
         renderProjects(project, projectsContainer, "h2");
     });
 }
+
 
 // **LOAD EVERYTHING**
 fetchProjects();
