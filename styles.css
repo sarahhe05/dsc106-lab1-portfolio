@@ -180,3 +180,53 @@ form button {
   grid-row: 2;  /* Place <dd> on the second row */
   margin: 0;
 }
+
+.container {
+  display: flex;
+  align-items: center; /* Align items vertically */
+  gap: 20px; /* Space between the pie chart and legend */
+}
+
+svg {
+  flex-shrink: 0; /* Prevent shrinking */
+  width: 200px; /* Adjust as needed */
+  height: 200px;
+}
+
+.legend {
+  flex: 1; /* Take up remaining space */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
+  gap: 12px;
+  list-style: none;
+  padding: 0;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.swatch {
+  width: 14px;
+  height: 14px;
+  background-color: var(--color);
+  border-radius: 4px;
+  display: inline-block;
+}
+
+svg:has(path:hover) path:not(:hover) {
+  opacity: 0.5;
+  transition: 300ms;
+}
+
+path {
+  cursor: pointer;
+  transition: 300ms;
+}
+
+.selected {
+  --color: oklch(60% 45% 0) !important;
+  fill: var(--color);
+}

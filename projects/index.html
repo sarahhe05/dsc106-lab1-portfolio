@@ -3,17 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>projects</title>
+    <title>Projects</title>
     <link rel="stylesheet" href="../styles.css">
     <script type="module" src="../global.js"></script>
 </head>
 <body>
     <h1 class="projects-title">Projects (<span id="project-count">0</span>)</h1>
 
-    <div class="projects">
-        <script src="../global.js" type="module"></script>
-        <script src="./projects.js" type="module"></script>
+    <div class="container">
+        <svg viewBox="-50 -50 100 100"></svg>
+        <ul class="legend"></ul>
     </div>
+      
+    <input
+        class="searchBar"
+        type="search"
+        aria-label="Search projects"
+        placeholder="🔍 Search projects…"
+    />
 
+    <div id="results" style="display: none;"></div> <!-- Ensure results are initially hidden -->
+
+    <div class="projects"></div> <!-- Default project list -->
+
+    <script src="./projects.js" type="module"></script>
 </body>
 </html>

@@ -186,7 +186,10 @@ export function renderProjects(project, containerElement, headingLevel = 'h2') {
   const imageSrc = project.image ? project.image : 'https://vis-society.github.io/labs/2/images/empty.svg';
   article.innerHTML += `
       <img src="${imageSrc}" alt="${project.title}">
+      <div>
       <p>${project.description}</p>
+      <p>${project.year}</p>
+      </div>
   `;
   
   // Append the article to the container
