@@ -1,5 +1,11 @@
 [
     {
+      "title": "Bikewatching",
+      "year": "2025",
+      "image": "/images/bikewatching.png",
+      "description": "A project where I analyzed bike rental data in New York City to identify trends and patterns in bike usage."
+    },
+    {
       "title": "Major Power Outage Analysis",
       "year": "2024",
       "image": "https://www.dhses.ny.gov/sites/g/files/oee1211/files/media/2021/12/power-outage.jpg",
@@ -22,12 +28,6 @@
       "year": "2024",
       "image": "https://vis-society.github.io/labs/2/images/empty.svg",
       "description": "Analyzed business data for my own sticker shop, helping to optimize pricing and product selection."
-    },
-    {
-      "title": "Lorem ipsum dolor sit.",
-      "year": "2023",
-      "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-      "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Id, dignissimos dolor quis nisi sint omnis commodi. Fuga, magni asperiores. Ut et delectus libero numquam consectetur repellat officiis neque! Ullam, mollitia."
     },
     {
         "title": "Voluptates reprehenderit minus ea.",
