@@ -231,3 +231,99 @@ path {
   fill: var(--color);
 }
 
+.stats {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.5rem 1rem;
+    margin: 1rem 0;
+}
+
+.stats dt {
+    font-weight: bold;
+}
+
+.stats dd {
+    margin: 0;
+}
+
+.gridlines line {
+    stroke: #ddd;
+    stroke-opacity: 0.7;
+}
+
+.gridlines path {
+    stroke: none;
+}
+
+.dots circle {
+    opacity: 0.7;
+}
+
+#chart svg {
+    width: 100%;
+    max-width: 1200px;  /* Adjust this value as needed */
+    height: auto;
+}
+
+dl.info {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.5rem 1rem;
+    margin: 0;
+}
+
+dl.info dt {
+    color: #666;
+    font-weight: normal;
+}
+
+dl.info dd {
+    margin: 0;
+    font-weight: bold;
+}
+
+.tooltip {
+    position: fixed;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    pointer-events: none;
+    transition-duration: 200ms;
+    transition-property: opacity, visibility;
+    z-index: 1000;
+}
+
+.tooltip[hidden]:not(:hover, :focus-within) {
+    opacity: 0;
+    visibility: hidden;
+}
+
+circle {
+    transition: 200ms;
+    transform-origin: center;
+    transform-box: fill-box;
+}
+
+circle:hover {
+    transform: scale(1.1); /* Reduced scale factor since dots now vary in size */
+}
+
+@keyframes marching-ants {
+    to {
+        stroke-dashoffset: -8;
+    }
+}
+
+.selection {
+    fill-opacity: 0.1;
+    stroke: black;
+    stroke-opacity: 0.7;
+    stroke-dasharray: 5 3;
+    animation: marching-ants 2s linear infinite;
+}
+
+circle.selected {
+    fill: #ff6b6b;
+}
+
