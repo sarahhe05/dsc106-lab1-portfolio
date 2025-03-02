@@ -10,8 +10,6 @@ let NUM_ITEMS;
 let ITEM_HEIGHT = 80;
 let VISIBLE_COUNT = 10;
 let totalHeight;
-let NUM_FILES;
-let files = [];
 
 async function loadData() {
   data = await d3.csv('loc.csv', (row) => ({
@@ -285,7 +283,7 @@ function filterCommitsByTime() {
 
 function updateFileVisualization(filteredCommits) {
     const lines = filteredCommits.flatMap((d) => d.lines);
-    files = d3
+    let files = d3
         .groups(lines, (d) => d.file)
         .map(([name, lines]) => {
             return { name, lines };
@@ -464,48 +462,6 @@ function displayCommitFiles(commits) {
         .append('div')
         .attr('class', 'line')
         .style('background', d => fileTypeColors(d.type));
-}
-
-function initializeFileSizesScrolly() {
-    const fileSizesScrollContainer = d3.select('#file-sizes-scroll-container');
-    const fileSizesSpacer = d3.select('#file-sizes-spacer');
-    const fileSizesItemsContainer = d3.select('#file-sizes-items-container');
-
-    // Set the height of the spacer based on the number of files
-    const totalHeight = (NUM_FILES - 1) * ITEM_HEIGHT; // Adjust NUM_FILES as needed
-    fileSizesSpacer.style('height', `${totalHeight}px`);
-
-    fileSizesScrollContainer.on('scroll', () => {
-        const scrollTop = fileSizesScrollContainer.property('scrollTop');
-        let startIndex = Math.floor(scrollTop / ITEM_HEIGHT);
-        startIndex = Math.max(0, Math.min(startIndex, files.length - VISIBLE_COUNT));
-        renderFileSizesItems(startIndex);
-    });
-
-    // Initial render
-    renderFileSizesItems(0);
-}
-
-function renderFileSizesItems(startIndex) {
-    const fileSizesItemsContainer = d3.select('#file-sizes-items-container');
-    fileSizesItemsContainer.selectAll('div').remove();
-
-    const endIndex = Math.min(startIndex + VISIBLE_COUNT, files.length);
-    let newFileSlice = files.slice(startIndex, endIndex);
-
-    // Create file size items
-    fileSizesItemsContainer.selectAll('div')
-        .data(newFileSlice)
-        .enter()
-        .append('div')
-        .attr('class', 'file-size-item')
-        .html(d => `
-            <p>
-                File: <code>${d.name}</code> has ${d.lines.length} lines.
-            </p>
-        `)
-        .style('position', 'absolute')
-        .style('top', (_, idx) => `${idx * ITEM_HEIGHT}px`);
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
