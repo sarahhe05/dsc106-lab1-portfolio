@@ -14,10 +14,28 @@
     <p>This page has metadata.</p>
     <div id="stats"></div>
     <h2>Commits by time of day</h2>
-    <p id="selection-count">No commits selected</p>
-    <div id="chart"></div>
-    <dl id="language-breakdown" class="stats"></dl>
     
+    <div id="scrollytelling">
+        <div id="scroll-container">
+            <div id="spacer"></div>
+            <div id="items-container"></div>
+        </div>
+        <div id="chart"></div>
+    </div>
+
+    <dl class="files">
+        <!-- Files will be added here dynamically -->
+    </dl>
+
+    <!-- New scrolly for file sizes -->
+    <div id="file-sizes-scrolly">
+        <div id="file-sizes-scroll-container">
+            <div id="file-sizes-spacer"></div>
+            <div id="file-sizes-items-container"></div>
+        </div>
+        <div id="file-sizes-chart"></div>
+    </div>
+
     <dl id="commit-tooltip" class="info tooltip" hidden>
         <dt>Commit</dt>
         <dd>

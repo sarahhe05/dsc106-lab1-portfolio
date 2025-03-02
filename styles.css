@@ -300,13 +300,17 @@ dl.info dd {
 }
 
 circle {
-    transition: 200ms;
+    transition: all 150ms, r calc(var(--r) * 50ms);
     transform-origin: center;
     transform-box: fill-box;
+    
+    @starting-style {
+        r: 0;
+    }
 }
 
 circle:hover {
-    transform: scale(1.1); /* Reduced scale factor since dots now vary in size */
+    transform: scale(1.1);
 }
 
 @keyframes marching-ants {
@@ -325,5 +329,219 @@ circle:hover {
 
 circle.selected {
     fill: #ff6b6b;
+}
+
+#timeline-control {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 1rem;
+}
+
+#timeline-control label {
+    flex: 1;
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+}
+
+#timeline-control time {
+    margin-left: auto;
+}
+
+#timeline-control input {
+    flex: 1;
+}
+
+.files {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.5rem 1rem;
+    margin: 2rem 0;
+}
+
+.files > div {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: subgrid;
+}
+
+.files dt {
+    grid-column: 1;
+}
+
+.files dt code {
+    font-family: monospace;
+    color: #444;
+    display: block;
+}
+
+.files dt small {
+    display: block;
+    font-size: 0.8em;
+    opacity: 0.7;
+    margin-top: 0.2em;
+}
+
+.files dd {
+    grid-column: 2;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: start;
+    align-content: start;
+    gap: 0.15em;
+    padding-top: 0.6em;
+    margin-left: 0;
+}
+
+.line {
+    display: flex;
+    width: 0.5em;
+    aspect-ratio: 1;
+    border-radius: 50%;
+}
+
+:global(body) {
+    max-width: min(120ch, 80vw);
+}
+
+#scrollytelling {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: minmax(300px, 1fr) minmax(500px, 2fr); /* Minimum widths and better proportion */
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+#scroll-container {
+    position: relative;
+    width: 100%; /* Changed from 95% */
+    height: 70vh; /* Taller scroll area */
+    overflow-y: scroll;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#chart {
+    position: sticky;
+    top: 2rem;
+    width: 100%;
+    height: 70vh; /* Match scroll container height */
+}
+
+#spacer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: none;
+    pointer-events: none;
+}
+
+#items-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.item {
+    padding: 1rem; /* Padding for inner spacing */
+    box-sizing: border-box; /* Include padding in height calculation */
+    background: white; /* Background color */
+    margin-bottom: 10px; /* Space between items */
+    border: 1px solid #ccc; /* Add a border around each item */
+    border-radius: 4px; /* Optional: rounded corners */
+    display: flex; /* Use flexbox for better alignment */
+    flex-direction: column; /* Stack content vertically */
+    overflow: hidden; /* Prevent overflow */
+}
+
+.item:not(:last-child) {
+    border-bottom: 2px solid #eee; /* Add a line between items */
+}
+
+.item p {
+    margin: 0; /* Remove default margin */
+    line-height: 1.5; /* Improve readability */
+    flex-grow: 1; /* Allow the paragraph to grow */
+    overflow-wrap: break-word; /* Ensure long words break to the next line */
+}
+
+.item a {
+    color: #0066cc; /* Link color */
+    text-decoration: none; /* Remove underline */
+}
+
+.item a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+/* Add date indicator near scrollbar */
+#scroll-container::-webkit-scrollbar {
+    width: 12px;
+}
+
+#scroll-container::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 6px;
+    border: 2px solid #fff;
+}
+
+#scroll-container::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
+
+.item small {
+    color: #666;
+    display: block;
+    margin-bottom: 0.2rem;
+}
+
+#file-sizes-scrolly {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Adjust as needed */
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+#file-sizes-scroll-container {
+    position: relative;
+    width: 100%; /* Full width */
+    height: 350px; /* Set height for scrolling */
+    overflow-y: scroll;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#file-sizes-chart {
+    position: sticky;
+    top: 2rem;
+    width: 100%;
+    height: 350px; /* Match scroll container height */
+}
+
+#file-sizes-spacer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: none; /* transparent */
+    pointer-events: none;
+}
+
+#file-sizes-items-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.file-size-item {
+    height: 100px; /* Adjust height as needed */
+    padding: 1rem;
+    box-sizing: border-box;
+    border-bottom: 2px solid #eee;
+    background: white;
+    margin-bottom: 10px; /* Space between items */
 }
 
