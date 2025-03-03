@@ -51,6 +51,9 @@ function processCommits() {
 
       return ret;
     });
+
+  // Sort commits by datetime after processing
+  commits.sort((a, b) => new Date(a.datetime) - new Date(b.datetime));
 }
 
 function displayStats() {
