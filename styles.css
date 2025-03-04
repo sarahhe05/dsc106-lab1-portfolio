@@ -5,6 +5,10 @@ html {
 body {
   background-color: canvas;
   color: canvastext;
+  font: 100%/1.5 system-ui;
+  max-width: 100ch;
+  margin-inline: auto;
+  padding: 0 1rem;
 }
 
 .color-scheme {
@@ -12,7 +16,7 @@ body {
   top: 1rem;          /* Offset from the top */
   right: 1rem;        /* Offset from the right */
   font-size: 80%;     /* Reduce the font size to make it less prominent */
-  font-family: inherit; /* Ensure it inherits the font-family */
+  font-family: inherit; /* Inherit font-family */
 }
 
 :root {
@@ -40,13 +44,7 @@ img {
   font-size: 2.5em;
 }
 
-body {
-    font: 100%/1.5 system-ui;
-    max-width: 100ch;
-    margin-inline: auto;
-    padding: 0 1rem;
-  }
-  
+/* Navigation */
 nav {
   display: flex;
   width: 100%;
@@ -55,15 +53,12 @@ nav {
   border-bottom-color: oklch(50% 10% 200 / 40%);
   justify-content: space-around;
 }
-
 nav ul {
   display: contents;
 }
-
 nav li {
   display: inline;
 }
-
 nav a {
   text-decoration: none;
   color: inherit;
@@ -71,22 +66,20 @@ nav a {
   padding: 0.5em;
   flex: 1;
 }
-
 nav a.current {
   border-bottom: 0.4em solid oklch(80% 3% 180);
   padding-bottom: 0.2em;
 }
-
 nav a:hover {
   border-bottom: 0.4em solid var(--color-accent);
   padding-bottom: 0.2em;
   background-color: color-mix(in lab, var(--color-accent), canvas 85%);
 }
 
+/* Form Elements */
 input, textarea, button {
   font: inherit;
 }
-
 form {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -97,7 +90,6 @@ form {
   padding: 2em;
   border-radius: 8px;
 }
-
 form label {
   display: grid;
   margin-block: 0.5em 0;
@@ -105,7 +97,6 @@ form label {
   text-align: right;
   padding-right: 1em;
 }
-
 form input, form textarea, form button {
   padding: 0.5em;
   font-family: inherit;
@@ -114,7 +105,6 @@ form input, form textarea, form button {
   box-sizing: border-box;
   margin-bottom: 1em;
 }
-
 form button {
   cursor: pointer;
   background-color: var(--color-accent);
@@ -127,13 +117,13 @@ form button {
   justify-self: center;
 }
 
+/* Projects */
 .projects {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
   gap: 1.5em; 
   padding: 1em;
 }
-
 .projects article {
   display: grid;
   grid-template-rows: subgrid;
@@ -142,72 +132,59 @@ form button {
   padding: 1em;
   grid-row: span 3;
 }
-
 .projects article img {
   width: 100%;
   height: auto; 
 }
-
 .projects article h2 {
   font-size: 1.5em;
   margin-bottom: 0.5em;
 }
-
 .projects article p {
   font-size: 1em;
-  color: canvastext
+  color: canvastext;
 }
 
+/* Profile Stats */
 #profile-stats {
   margin-top: 20px;
   padding: 15px;
   border-radius: 5px;
   background-color: canvas;
 }
-
 #profile-stats dl {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;  /* Four equal-width columns */
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 10px;
 }
-
 #profile-stats dt {
   font-weight: bold;
-  grid-row: 1;  /* Place <dt> on the first row */
+  grid-row: 1;
 }
-
 #profile-stats dd {
-  grid-row: 2;  /* Place <dd> on the second row */
+  grid-row: 2;
   margin: 0;
 }
 
-.container {
-  display: flex;
-  align-items: center; /* Align items vertically */
-  gap: 20px; /* Space between the pie chart and legend */
-}
-
+/* Containers and SVG */
 svg {
-  flex-shrink: 0; /* Prevent shrinking */
-  width: 200px; /* Adjust as needed */
+  flex-shrink: 0;
+  width: 200px;
   height: 200px;
 }
-
 .legend {
-  flex: 1; /* Take up remaining space */
+  flex: 1;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
   gap: 12px;
   list-style: none;
   padding: 0;
 }
-
 .legend-item {
   display: flex;
   align-items: center;
   gap: 8px;
 }
-
 .swatch {
   width: 14px;
   height: 14px;
@@ -215,285 +192,271 @@ svg {
   border-radius: 4px;
   display: inline-block;
 }
-
 svg:has(path:hover) path:not(:hover) {
   opacity: 0.5;
   transition: 300ms;
 }
-
 path {
   cursor: pointer;
   transition: 300ms;
 }
-
 .selected {
   --color: gray !important;
   fill: var(--color);
 }
 
+/* Stats */
 .stats {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 0.5rem 1rem;
-    margin: 1rem 0;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.5rem 1rem;
+  margin: 1rem 0;
 }
-
 .stats dt {
-    font-weight: bold;
+  font-weight: bold;
 }
-
 .stats dd {
-    margin: 0;
+  margin: 0;
 }
 
+/* Gridlines and dots */
 .gridlines line {
-    stroke: #ddd;
-    stroke-opacity: 0.7;
+  stroke: #ddd;
+  stroke-opacity: 0.7;
 }
-
 .gridlines path {
-    stroke: none;
+  stroke: none;
 }
-
 .dots circle {
-    opacity: 0.7;
+  opacity: 0.7;
 }
-
 #chart svg {
-    width: 100%;
-    max-width: 1200px;  /* Adjust this value as needed */
-    height: auto;
+  width: 100%;
+  max-width: 1200px;
+  height: auto;
 }
 
+/* Tooltip */
 dl.info {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 0.5rem 1rem;
-    margin: 0;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.5rem 1rem;
+  margin: 0;
 }
-
 dl.info dt {
-    color: #666;
-    font-weight: normal;
+  color: #666;
+  font-weight: normal;
 }
-
 dl.info dd {
-    margin: 0;
-    font-weight: bold;
+  margin: 0;
+  font-weight: bold;
 }
-
 .tooltip {
-    position: fixed;
-    background-color: rgba(255, 255, 255, 0.95);
-    padding: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    pointer-events: none;
-    transition-duration: 200ms;
-    transition-property: opacity, visibility;
-    z-index: 1000;
+  position: fixed;
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  pointer-events: none;
+  transition-duration: 200ms;
+  transition-property: opacity, visibility;
+  z-index: 1000;
 }
-
 .tooltip[hidden]:not(:hover, :focus-within) {
-    opacity: 0;
-    visibility: hidden;
+  opacity: 0;
+  visibility: hidden;
 }
-
 circle {
-    transition: all 150ms, r calc(var(--r) * 50ms);
-    transform-origin: center;
-    transform-box: fill-box;
-    
-    @starting-style {
-        r: 0;
-    }
+  transition: all 150ms, r calc(var(--r) * 50ms);
+  transform-origin: center;
+  transform-box: fill-box;
+  @starting-style {
+    r: 0;
+  }
 }
-
 circle:hover {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
-
 @keyframes marching-ants {
-    to {
-        stroke-dashoffset: -8;
-    }
+  to {
+    stroke-dashoffset: -8;
+  }
 }
-
 .selection {
-    fill-opacity: 0.1;
-    stroke: black;
-    stroke-opacity: 0.7;
-    stroke-dasharray: 5 3;
-    animation: marching-ants 2s linear infinite;
+  fill-opacity: 0.1;
+  stroke: black;
+  stroke-opacity: 0.7;
+  stroke-dasharray: 5 3;
+  animation: marching-ants 2s linear infinite;
 }
-
 circle.selected {
-    fill: #ff6b6b;
+  fill: #ff6b6b;
 }
 
+/* Timeline Control */
 #timeline-control {
-    display: flex;
-    align-items: baseline;
-    margin-bottom: 1rem;
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 1rem;
 }
-
 #timeline-control label {
-    flex: 1;
-    display: flex;
-    align-items: baseline;
-    gap: 1rem;
+  flex: 1;
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
 }
-
 #timeline-control time {
-    margin-left: auto;
+  margin-left: auto;
 }
-
 #timeline-control input {
-    flex: 1;
+  flex: 1;
 }
 
+/* Files List (dots) */
 .files {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 0.5rem 1rem;
-    margin: 2rem 0;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.5rem 1rem;
+  margin: 2rem 0;
 }
-
 .files > div {
-    grid-column: 1 / -1;
-    display: grid;
-    grid-template-columns: subgrid;
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: subgrid;
 }
-
 .files dt {
-    grid-column: 1;
+  grid-column: 1;
 }
-
 .files dt code {
-    font-family: monospace;
-    color: #444;
-    display: block;
+  font-family: monospace;
+  color: #444;
+  display: block;
 }
-
 .files dt small {
-    display: block;
-    font-size: 0.8em;
-    opacity: 0.7;
-    margin-top: 0.2em;
+  display: block;
+  font-size: 0.8em;
+  opacity: 0.7;
+  margin-top: 0.2em;
 }
-
 .files dd {
-    grid-column: 2;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: start;
-    align-content: start;
-    gap: 0.15em;
-    padding-top: 0.6em;
-    margin-left: 0;
+  grid-column: 2;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  align-content: start;
+  gap: 0.15em;
+  padding-top: 0.6em;
+  margin-left: 0;
 }
-
 .line {
-    display: flex;
-    width: 0.5em;
-    aspect-ratio: 1;
-    border-radius: 50%;
+  display: flex;
+  width: 0.5em;
+  aspect-ratio: 1;
+  border-radius: 50%;
 }
 
-:global(body) {
-    max-width: min(120ch, 80vw);
-}
-
-#scrollytelling {
-    grid-column: 1 / -1;
-    display: grid;
-    grid-template-columns: minmax(300px, 1fr) minmax(500px, 2fr); /* Minimum widths and better proportion */
-    gap: 2rem;
-    margin: 2rem 0;
-}
-
-#scroll-container {
-    position: relative;
-    width: 100%; /* Changed from 95% */
-    height: 70vh; /* Taller scroll area */
-    overflow-y: scroll;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-#chart {
-    position: sticky;
-    top: 2rem;
-    width: 100%;
-    height: 70vh; /* Match scroll container height */
-}
-
-#spacer {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: none;
-    pointer-events: none;
-}
-
-#items-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-}
-
+/* Narrative item styling (shared by both scrollytelling sections) */
 .item {
-    padding: 1rem; /* Padding for inner spacing */
-    box-sizing: border-box; /* Include padding in height calculation */
-    background: white; /* Background color */
-    margin-bottom: 10px; /* Space between items */
-    border: 1px solid #ccc; /* Add a border around each item */
-    border-radius: 4px; /* Optional: rounded corners */
-    display: flex; /* Use flexbox for better alignment */
-    flex-direction: column; /* Stack content vertically */
-    overflow: hidden; /* Prevent overflow */
+  padding: 1rem;
+  box-sizing: border-box;
+  background: white;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
-
-.item:not(:last-child) {
-    border-bottom: 2px solid #eee; /* Add a line between items */
-}
-
 .item p {
-    margin: 0; /* Remove default margin */
-    line-height: 1.5; /* Improve readability */
-    flex-grow: 1; /* Allow the paragraph to grow */
-    overflow-wrap: break-word; /* Ensure long words break to the next line */
+  margin: 0;
+  line-height: 1.5;
+  flex-grow: 1;
+  overflow-wrap: break-word;
 }
-
 .item a {
-    color: #0066cc; /* Link color */
-    text-decoration: none; /* Remove underline */
+  color: #0066cc;
+  text-decoration: none;
 }
-
 .item a:hover {
-    text-decoration: underline; /* Underline on hover */
+  text-decoration: underline;
+}
+#items-container, #second-scrolly {
+  width: 100%;
 }
 
-/* Add date indicator near scrollbar */
-#scroll-container::-webkit-scrollbar {
-    width: 12px;
+/* Scrollytelling for commits */
+#scrollytelling {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(300px, 1fr) minmax(500px, 2fr);
+  gap: 2rem;
+  margin: 2rem 0;
+}
+#scroll-container {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  overflow-y: scroll;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+#chart {
+  position: sticky;
+  top: 2rem;
+  width: 100%;
+  height: 70vh;
+}
+#spacer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: none;
+  pointer-events: none;
+}
+#items-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
 
-#scroll-container::-webkit-scrollbar-thumb {
-    background-color: #888;
-    border-radius: 6px;
-    border: 2px solid #fff;
+/* Scrollytelling for file sizes (side by side) */
+#scrollytelling-files {
+  display: flex;
+  gap: 2rem;
+  margin: 2rem 0;
 }
-
-#scroll-container::-webkit-scrollbar-track {
-    background-color: #f1f1f1;
+#files-dots {
+  flex: 1;
+  /* Display all file dots; no scrolling */
 }
-
-.item small {
-    color: #666;
-    display: block;
-    margin-bottom: 0.2rem;
+#scroll-container-files {
+  padding: 1rem;
+  box-sizing: border-box;
+  background: white;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
-
+#spacer-files {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  pointer-events: none;
+}
+#items-container-files {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+/* Narrative container in second scrolly (commit details) */
+#second-scrolly {
+  width: 100%;
+  /* Inherit the same .item styling as other narratives */
+}

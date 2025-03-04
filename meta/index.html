@@ -1,45 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects</title>
-    <link rel="stylesheet" href="../styles.css">
-    <script type="module" src="../global.js"></script>
-    <script src="https://d3js.org/d3.v7.min.js"></script>
-    <script src="main.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects</title>
+  <link rel="stylesheet" href="../styles.css">
+  <script type="module" src="../global.js"></script>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="main.js" defer></script>
+  <style>
+    /* Arrange the file dots and scrollytelling side by side */
+    #scrollytelling-files {
+      display: flex;
+      gap: 1rem;
+    }
+    #files-dots {
+      flex: 1;
+      /* Display all dots; no scrolling */
+    }
+    #scroll-container-files {
+      flex: 1;
+      overflow-y: scroll;
+      max-height: 400px;
+    }
+  </style>
 </head>
 <body>
-    <h1 class="projects-title">Meta</h1>
-    <p>This page has metadata.</p>
-    <div id="stats"></div>
-    <h2>Commits by time of day</h2>
-    
-    <div id="scrollytelling">
-        <div id="scroll-container">
-            <div id="spacer"></div>
-            <div id="items-container"></div>
-        </div>
-        <div id="chart"></div>
+  <h1 class="projects-title">Meta</h1>
+  <p>This page has metadata.</p>
+  
+  <!-- Stats -->
+  <div id="stats"></div>
+  
+  <!-- Timeline control for filtering commits -->
+  <div id="timeline-control">
+    <label for="timeline-slider">Select time:</label>
+    <input type="range" id="timeline-slider" min="0" max="100" step="1">
+    <time></time>
+  </div>
+  
+  <!-- Commit visualization section -->
+  <h2>Commits by time of day</h2>
+  <div id="scrollytelling">
+    <div id="scroll-container">
+      <div id="spacer"></div>
+      <div id="items-container"></div>
     </div>
-
+    <div id="chart"></div>
+  </div>
+  
+  <!-- File Sizes Visualization Section -->
+<h2>File Sizes Visualization</h2>
+<div id="scrollytelling-files" style="display: flex; gap: 1rem;">
+  <!-- Left side: file dots (no scrolling) -->
+  <div id="files-dots">
     <dl class="files">
-        <!-- Files will be added here dynamically -->
+      <!-- File dots will update here -->
     </dl>
-    
-    <dl id="commit-tooltip" class="info tooltip" hidden>
-        <dt>Commit</dt>
-        <dd>
-            <a href="" id="commit-link" target="_blank"></a>
-        </dd>
-        <dt>Date</dt>
-        <dd id="commit-date"></dd>
-        <dt>Time</dt>
-        <dd id="commit-time"></dd>
-        <dt>Author</dt>
-        <dd id="commit-author"></dd>
-        <dt>Lines edited</dt>
-        <dd id="commit-lines"></dd>
-    </dl>
+  </div>
+  <!-- Right side: commit narrative (scrollable) -->
+  <div id="scroll-container-files" style="flex: 1; overflow-y: scroll; max-height: 400px;">
+    <div id="spacer-files"></div>
+    <!-- Use this container for commit narrative -->
+    <div id="second-scrolly"></div>
+  </div>
+</div>
+  
+  <!-- Commit tooltip -->
+  <dl id="commit-tooltip" class="info tooltip" hidden>
+    <dt>Commit</dt>
+    <dd>
+      <a href="" id="commit-link" target="_blank"></a>
+    </dd>
+    <dt>Date</dt>
+    <dd id="commit-date"></dd>
+    <dt>Time</dt>
+    <dd id="commit-time"></dd>
+    <dt>Author</dt>
+    <dd id="commit-author"></dd>
+    <dt>Lines edited</dt>
+    <dd id="commit-lines"></dd>
+  </dl>
 </body>
 </html>
