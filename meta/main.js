@@ -309,12 +309,7 @@ function renderItems(startIndex) {
 }
 
 // --- File Sizes Scrollytelling Section ---
-// Now we use commit data for the second scrollytelling.
-// The left side will update the file dots (grouped by file from the commit slice)
-// The right side will display commit narrative in the desired format.
-
 function initializeFileSizesScrollytelling() {
-  // Use the commits array (already sorted by datetime)
   const ITEM_HEIGHT_FILES = 80;
   const VISIBLE_COUNT_FILES = 10;
   const totalHeightFiles = (commits.length - 1) * ITEM_HEIGHT_FILES;
@@ -339,22 +334,17 @@ function renderCommitItems(commitsData, startIndex, visibleCount) {
   // Update file dots (left side) by grouping the commit slice by file.
   const fileGroups = d3.groups(commitSlice.flatMap(d => d.lines), d => d.file)
                         .map(([name, lines]) => ({ name, lines }));
-  updateFileDots(fileGroups);
+  // Sort files by number of lines descending
+  const sortedFileGroups = d3.sort(fileGroups, d => -d.lines.length);
+  updateFileDots(sortedFileGroups);
 }
 
 function renderSecondScrolly(data) {
   const storyContainer = d3.select('#second-scrolly');
-
-  // Clear previous messages
   storyContainer.selectAll('.item').remove();
-
-  // Generate new messages based on the updated format
   data.forEach((d, i) => {
-    // Create a new "item" div for each message
     const itemDiv = storyContainer.append('div')
         .attr('class', 'item');
-
-    // Append the <p> element inside the "item" div
     itemDiv.append('p')
         .html(`
             On ${new Date(d.datetime).toLocaleString("en", {
